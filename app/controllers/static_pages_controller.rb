@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   end
 
   def help
+  	@helf = help_path
   end
 
   def about
