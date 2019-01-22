@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  
+
   def setup
   	@user = User.new(name: "Paras Bansal", email: "parasbansal33@gmail.com",
-  					 password: "foobar", password_confirmation: "foobar")
+      password: "foobar", password_confirmation: "foobar")
   end
 
   test "should be valid" do
@@ -33,17 +33,17 @@ class UserTest < ActiveSupport::TestCase
 
   test "email validation should accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                         first.last@foo.jp alice+bob@baz.cn]
-    valid_addresses.each do |valid_address|
+     first.last@foo.jp alice+bob@baz.cn]
+     valid_addresses.each do |valid_address|
       @user.email = valid_address
       assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
   end
 
   test "email validation should reject invalid addresses" do
-   	invalid_addresses = %w[123@xyz,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com foo@bar..com]
-    invalid_addresses.each do |invalid_address|
+    invalid_addresses = %w[123@xyz,com user_at_foo.org user.name@example.
+     foo@bar_baz.com foo@bar+baz.com foo@bar..com]
+     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
     end
@@ -63,7 +63,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
 
-   test "password should be present (nonblank)" do
+  test "password should be present (nonblank)" do
     @user.password = @user.password_confirmation = " " * 6
     assert_not @user.valid?
   end
@@ -72,5 +72,5 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
-
+  
 end
