@@ -29,5 +29,5 @@ class SessionsController < ApplicationController
     # if part is the fix for the first subtle bug
     log_out if logged_in?
     redirect_to root_url
-  end
+end
 end
